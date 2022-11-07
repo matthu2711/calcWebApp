@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:left="http://www.w3.org/1999/xhtml">
 <link href="style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+<script src="semantic/dist/semantic.min.js"></script>
+
 <head>
     <meta charset="UTF-8">
     <title>Calculator</title>
@@ -16,15 +23,17 @@
     }
 </style>
 <div id="header">
-    <h1>Welcome to use the expression Calculator!</h1>
-    <h2>Please type your expression</h2>
+    <h1 style="font-family: 'Roboto Slab', serif;">Welcome to use the expression Calculator!</h1>
+    <h2 style="font-family: 'Roboto Slab', serif;">Please type your expression</h2>
 </div>
 
 <div id="center">
     <form method=get action=Calculator>
-        Expression: <input type=text size="50" name=t1><br>
-        <input style="position: absolute; left: 100px; margin-top: 20px" name="submit" type=submit value="submit">
-        <input style="position: absolute; left: 200px; margin-top: 20px" type="reset" value="Delete" />
+        <div class="ui input" style="padding-right: 10px">
+            <input type=text placeholder="Expression">
+        </div>
+        <input class="ui primary button" name="submit" type=submit value="submit">
+        <input class="ui negative basic button" type="reset" value="Delete" />
     </form>
 </div>
 </body>
