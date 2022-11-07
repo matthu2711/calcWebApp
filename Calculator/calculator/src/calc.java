@@ -46,19 +46,32 @@ public class calc {
         Stack<Double> stack = new Stack<Double>();
         double x = 0;
         boolean isNegative = false;
-        boolean isLog = false;
-        boolean isExp = false;
+        int isLog = 0;
+        int isExp = 0;
         int pastFloatingPoint = 0;
         for (int i = 0; i < expression.length(); i++) {
-            if (expression.charAt(i) == 'l' && expression.charAt(i+1) == 'o' && expression.charAt(i+2) == 'g') {
-                isLog = true;
-                i = i + 3; // get number after "log"
+            if (expression.charAt(i) == 'l' && expression.charAt(i+1) == 'n') {
+                isLog++;
+                i = i + 2; // skip over characters of "ln("
             }
             else if (expression.charAt(i) == 'e' && expression.charAt(i+1) == 'x' && expression.charAt(i+2) == 'p') {
-                isExp = true;
-                i = i + 3; // get number after "exp"
+                isExp++;
+                i = i + 3; // skip over characters of "exp("
             }
-            if (Character.isDigit(expression.charAt(i))) {
+            else if (expression.charAt(i) == ')') {
+                double result = stack.pop();
+                if (isLog > 0) {
+                    result = Math.log(result);
+                    isLog--;
+                }
+                else if (isExp > 0) {
+                    result = Math.exp(result);
+                    isExp--;
+                }
+                stack.push(result);
+
+            }
+            else if (Character.isDigit(expression.charAt(i))) {
                 if (pastFloatingPoint > 0) {
                     double temp = (double) Character.getNumericValue(expression.charAt(i)) / (Math.pow(10,pastFloatingPoint));
                     x = x + temp;
@@ -74,13 +87,9 @@ public class calc {
                 }
 
                 if((i+1) >= expression.length() || (!Character.isDigit(expression.charAt(i+1)) && expression.charAt(i+1) != '.')) {
-                    if (isLog) x = Math.log(x);
-                    else if (isExp) x = Math.exp(x);
                     stack.push(x);
                     x = 0;
                     isNegative = false;
-                    isLog = false;
-                    isExp = false;
                     pastFloatingPoint = 0;
                 }
             }
@@ -124,6 +133,17 @@ public class calc {
                 ++i;
             }
 
+            if (input.charAt(i) == 'l' && input.charAt(i+1) == 'n') { // check for log
+                i = i + 2; // skip to number of log
+                postfixExpression += "ln(";
+                stack.push('l'); // marks end of log in stack
+            }
+            else if (input.charAt(i) == 'e' && input.charAt(i+1) == 'x' && input.charAt(i+2) == 'p') { // check for exp
+                i = i + 3; // skip to number of exp
+                postfixExpression += "exp(";
+                stack.push('e'); // marks end of exp in stack
+            }
+
             //process number values
             if (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.') {                                         //Check if character at position i is a numeric value
                 if (lastCharacterDigit) {
@@ -136,28 +156,6 @@ public class calc {
                     postfixExpression += ' ';
                     lastCharacterDigit = true;
                 }
-            }
-
-            else if (input.charAt(i) == 'l' && input.charAt(i+1) == 'o' && input.charAt(i+2) == 'g') { // check for log
-                i = i + 3; // skip to number in log
-                postfixExpression += "log";
-                while (i < input.length() && (Character.isDigit(input.charAt(i)) || input.charAt(i) != '.')) {
-                    postfixExpression += input.charAt(i);
-                    i++;
-                }
-                postfixExpression += ' ';
-                if (i >= input.length()) lastCharacterDigit = true;
-            }
-
-            else if (input.charAt(i) == 'e' && input.charAt(i+1) == 'x' && input.charAt(i+2) == 'p') { // check for log
-                i = i + 3; // skip to number in exp
-                postfixExpression += "exp";
-                while (i < input.length() && (Character.isDigit(input.charAt(i)) || input.charAt(i) != '.')) {
-                    postfixExpression += input.charAt(i);
-                    i++;
-                }
-                postfixExpression += ' ';
-                if (i >= input.length()) lastCharacterDigit = true;
             }
 
             else if (!lastCharacterDigit && input.charAt(i) == '-' && Character.isDigit(input.charAt(i+1))) {
@@ -174,6 +172,10 @@ public class calc {
                     postfixExpression += ' ';
                 }
                 stack.pop(); // discard left bracket
+                if (stack.peek() == 'l' || stack.peek() == 'e') {
+                    postfixExpression += ") ";
+                    stack.pop();
+                }
             }
 
             //process operators
@@ -229,7 +231,7 @@ public class calc {
 
     //takes integer to navigate to a specific message for the user and prints it.
     //return type void
-    public static void printMenu(int option) {
+    private static void printMenu(int option) {
         switch(option) {
             case 0:
                 System.out.println("\r\n" +
