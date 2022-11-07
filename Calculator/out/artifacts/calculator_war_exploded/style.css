@@ -1,0 +1,22 @@
+#header {
+    position: absolute;
+    top: 70px;
+    left: 50px;
+    color:black;
+    padding:5px;
+}
+#center {
+    position: absolute;
+    top: 230px;
+    left: 50px;
+    line-height:30px;
+    height:300px;
+    float:left;
+    padding:5px;
+}
+#submit{
+    position: absolute;
+    left: 300px;
+    top: 158px;
+}
+

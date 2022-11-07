@@ -20,7 +20,6 @@ public class Calculator extends HttpServlet {
         PrintWriter out = null;
         try{
             out = response.getWriter();
-            out.println("<center>");
             /*String result = null;
             String expression = request.getParameter("t1");
             System.out.println("Please type your expression to the calculator:");
@@ -31,16 +30,22 @@ public class Calculator extends HttpServlet {
             double result = 0;
             String userInput = request.getParameter("t1");
             result = calc.infixCalculator(userInput);
-
-
-            out.println("<h3>"+ result + "</h3>");
+            out.println("<h3 style=\"position: absolute; left: 50px; margin-top: 70px\">"+ userInput + " = " + result + "</h3>");
         }catch(Exception e){
             out.println("Error: " + e.getMessage());
         }
         finally {
             out.println("<br>");
-            out.println("To Goto main page <a href=index.html> Click Here </a>");
-            out.println("</center>");
+            out.println("Another Calculation <a href=index.html> Click Here </a>");
+            out.println("<style>");
+            out.println("body{");
+            out.println("background-image: url(\"background.jpg\");");
+            out.println("background-position: center center;");
+            out.println("background-repeat: no-repeat;");
+            out.println("background-size: cover;");
+            out.println("background-attachment: fixed;");
+            out.println("}");
+            out.println("<style>");
         }
     }
 
