@@ -133,7 +133,7 @@ public class calc {
                 ++i;
             }
 
-            if (input.charAt(i) == 'l' && input.charAt(i+1) == 'o' && input.charAt(i+1) == 'g') { // check for log
+            if (input.charAt(i) == 'l' && input.charAt(i+1) == 'o' && input.charAt(i+2) == 'g') { // check for log
                 i = i + 3; // skip to number of log
                 postfixExpression += "log(";
                 stack.push('l'); // marks end of log in stack
