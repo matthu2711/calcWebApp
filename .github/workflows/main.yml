@@ -4,6 +4,11 @@ on:
   create:
     tags:
       - "v*.*.*"
+      
+    jobs:
+    build:
+    runs-on: ubuntu-latest
+
     steps:
       - name: Check Out Repo 
         uses: actions/checkout@v2
