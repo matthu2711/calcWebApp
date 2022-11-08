@@ -15,7 +15,7 @@
 <body>
 <style>
     body{
-        background-image: url("background.jpg");
+        background-image: url("desk.jpg");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -23,18 +23,21 @@
     }
 </style>
 <div id="header">
-    <h1 style="font-family: 'Roboto Slab', serif;">Welcome to use the expression Calculator!</h1>
-    <h2 style="font-family: 'Roboto Slab', serif;">Please type your expression</h2>
+    <h1 style="font-family: 'Roboto Slab', serif; font-size: 100px">Calculator</h1>
 </div>
 
 <div id="center">
+    <div class="ui inverted segment">
     <form method=get action=Calculator>
-        <div class="ui input" style="padding-right: 10px">
+        <div class="ui massive fluid icon input" style="margin-right: 10px">
             <input type=text placeholder="Expression">
+            <i class="calculator icon"></i>
         </div>
-        <input class="ui primary button" name="submit" type=submit value="submit">
-        <input class="ui negative basic button" type="reset" value="Delete" />
+        <div class="ui inverted divider"></div>
+        <input class="ui inverted red button" style="margin-right: 10px;" type="reset" value="Delete" />
+        <input class="ui inverted positive button" name="submit" type=submit value="Calculate">
     </form>
+    </div>
 </div>
 </body>
 </html>
