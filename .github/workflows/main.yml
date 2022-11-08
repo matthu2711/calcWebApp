@@ -5,8 +5,8 @@ on:
     tags:
       - "v*.*.*"
       
-    jobs:
-    build:
+jobs:
+  build:
     runs-on: ubuntu-latest
 
     steps:
