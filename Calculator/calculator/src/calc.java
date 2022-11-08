@@ -50,9 +50,9 @@ public class calc {
         int isExp = 0;
         int pastFloatingPoint = 0;
         for (int i = 0; i < expression.length(); i++) {
-            if (expression.charAt(i) == 'l' && expression.charAt(i+1) == 'n') {
+            if (expression.charAt(i) == 'l' && expression.charAt(i+1) == 'o' && expression.charAt(i+2) == 'g') {
                 isLog++;
-                i = i + 2; // skip over characters of "ln("
+                i = i + 3; // skip over characters of "log("
             }
             else if (expression.charAt(i) == 'e' && expression.charAt(i+1) == 'x' && expression.charAt(i+2) == 'p') {
                 isExp++;
@@ -133,9 +133,9 @@ public class calc {
                 ++i;
             }
 
-            if (input.charAt(i) == 'l' && input.charAt(i+1) == 'n') { // check for log
-                i = i + 2; // skip to number of log
-                postfixExpression += "ln(";
+            if (input.charAt(i) == 'l' && input.charAt(i+1) == 'o' && input.charAt(i+1) == 'g') { // check for log
+                i = i + 3; // skip to number of log
+                postfixExpression += "log(";
                 stack.push('l'); // marks end of log in stack
             }
             else if (input.charAt(i) == 'e' && input.charAt(i+1) == 'x' && input.charAt(i+2) == 'p') { // check for exp
