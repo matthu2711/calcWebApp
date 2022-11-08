@@ -56,6 +56,7 @@ webapproot
       			|------lib (third-party jar package)*
       			|------web.xml (Register Servlet)*
       |------Front-end content
+
 Notice:
 1.webapproot is the project name
 2.classes store the class file after the Java program is compiled
