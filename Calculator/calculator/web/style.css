@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@800&family=Roboto+Slab:wght@300;900&display=swap');
+
+#header {
+    position: absolute;
+    top: 70px;
+    left: 50px;
+    color:black;
+    padding:5px;
+}
+
+#center {
+    position: absolute;
+    top: 210px;
+    left: 50px;
+    width: 50%;
+    min-width: 510px;
+    padding:5px;
+}
+

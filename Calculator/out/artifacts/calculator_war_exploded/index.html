@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:left="http://www.w3.org/1999/xhtml">
+<link href="style.css" rel="stylesheet" type="text/css">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+<style>
+    body{
+        background-image: url("background.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+</style>
+<div id="header">
+    <h1>Welcome to use the expression Calculator!</h1>
+    <h2>Please type your expression</h2>
+</div>
+
+<div id="center">
+    <form method=get action=Calculator>
+        Expression: <input type=text size="50" name=t1><br>
+        <input style="position: absolute; left: 100px; margin-top: 20px" name="submit" type=submit value="submit">
+        <input style="position: absolute; left: 200px; margin-top: 20px" type="reset" value="Delete" />
+    </form>
+</div>
+</body>
+</html>
