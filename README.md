@@ -50,15 +50,15 @@ Close Tomcat:
 
 #### Webapp directory structure:
 
-*webapproot*
-      *|------WEB-INF*
-      			*|------classes (store bytecode)*
-      			*|------lib (third-party jar package)*
-      			*|------web.xml (Register Servlet)*
-      *|------Front-end content*
-*Notice:*
-*1.webapproot is the project name*
-*2.classes store the class file after the Java program is compiled*
+webapproot
+      |------WEB-INF
+      			|------classes (store bytecode)*
+      			|------lib (third-party jar package)*
+      			|------web.xml (Register Servlet)*
+      |------Front-end content
+Notice:
+1.webapproot is the project name
+2.classes store the class file after the Java program is compiled
 
 ### Step 2: Let the IDEA tool associate the Tomcat server.
 
