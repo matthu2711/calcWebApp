@@ -1,7 +1,9 @@
 name: CD to Docker Hub
 
 on:
-  create:
+  push:
+    branches:
+      - main
     tags:
       - "v*.*.*"
       
