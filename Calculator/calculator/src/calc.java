@@ -25,7 +25,7 @@ public class calc {
         input.close();                                                                             //Close Scanner object
     }
 
-    public static double infixCalculator(String input){
+    public static String infixCalculator(String input){
         String postfixExpression = inputInterpret(input);                              //Validate input expression, convert to postfix if valid, print error if not
         if (!postfixExpression.equalsIgnoreCase("")) {                                     //If valid input, calculate result of expression, if invalid return to Instruction & Input screen
             //System.out.println("for testing, postfix expression: " + postfixExpression);   //testing line
@@ -33,10 +33,10 @@ public class calc {
             double scale = Math.pow(10, 3);  // round to 3 decimal places
             result = Math.round(result * scale) / scale;                                //Print Result of calculation, evaluatePostFix() returns an integer.
             printResult(result);
-            return result;
+            return Double.toString(result);
         }
         else {
-            return -1;
+            return "Invalid Input";
         }
     }
 
